@@ -93,7 +93,7 @@ The following figure summarizes our results for the data-driven solution of the 
 
 
 ![](http://www.dam.brown.edu/people/mraissi/assets/img/Burgers_CT_inference.png)
-> Burgers' equation: Top: Predicted solution along with the initial and boundary training data. In addition we are using 10,000 collocation points generated using a Latin Hypercube Sampling strategy. Bottom: Comparison of the predicted and exact solutions corresponding to the three temporal snapshots depicted by the white vertical lines in the top panel. Model training took approximately 60 seconds on a single NVIDIA Titan X GPU card.
+> _Burgers' equation:_ **Top:** Predicted solution along with the initial and boundary training data. In addition we are using 10,000 collocation points generated using a Latin Hypercube Sampling strategy. **Bottom:** Comparison of the predicted and exact solutions corresponding to the three temporal snapshots depicted by the white vertical lines in the top panel. Model training took approximately 60 seconds on a single NVIDIA Titan X GPU card.
 
 **Example (Shr&ouml;dinger Equation)**
 
