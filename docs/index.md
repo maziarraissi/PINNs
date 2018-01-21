@@ -90,11 +90,7 @@ The following figure summarizes our results for the data-driven solution of the 
 
 
 ![](http://www.dam.brown.edu/people/mraissi/assets/img/Burgers_CT_inference.png)
-
 > Burgers' equation: Top: Predicted solution along with the initial and boundary training data. In addition we are using 10,000 collocation points generated using a Latin Hypercube Sampling strategy. Bottom: Comparison of the predicted and exact solutions corresponding to the three temporal snapshots depicted by the white vertical lines in the top panel. Model training took approximately 60 seconds on a single NVIDIA Titan X GPU card.
-
-<br/><br/>
-<br/><br/>
 
 **Example (Shr&ouml;dinger Equation)**
 
@@ -143,16 +139,8 @@ Here, $$\{x_0^i, h^i_0\}_{i=1}^{N_0}$$ denotes the initial data, $$\{t^i_b\}_{i=
 
 The following figure summarizes the results of our experiment.
 
-
-<div class="img_row">
-    <img class="col three" src="{{ site.url }}/assets/img/NLS.png" alt="" title="NLS_CT_inference"/>
-</div>
-<div class="col three caption">
-    Shr&ouml;dinger equation: Top: Predicted solution along with the initial and boundary training data. In addition we are using 20,000 collocation points generated using a Latin Hypercube Sampling strategy. Bottom: Comparison of the predicted and exact solutions corresponding to the three temporal snapshots depicted by the dashed vertical lines in the top panel.
-</div>
-
-<br/><br/>
-<br/><br/>
+![](http://www.dam.brown.edu/people/mraissi/assets/img/NLS.png)
+> Shr&ouml;dinger equation: Top: Predicted solution along with the initial and boundary training data. In addition we are using 20,000 collocation points generated using a Latin Hypercube Sampling strategy. Bottom: Comparison of the predicted and exact solutions corresponding to the three temporal snapshots depicted by the dashed vertical lines in the top panel.
 
 One potential limitation of the continuous time neural network models considered so far, stems from the need to use a large number of collocation points $$N_f$$ in order to enforce physics informed constraints in the entire spatio-temporal domain. Although this poses no significant issues for problems in one or two spatial dimensions, it may introduce a severe bottleneck in higher dimensional problems, as the total number of collocation points needed to globally enforce a physics informed constrain (i.e., in our case a partial differential equation) will increase exponentially. In the next section, we put forth a different approach that circumvents the need for collocation points by introducing a more structured neural network representation leveraging the classical [Runge-Kutta](https://en.wikipedia.org/wiki/Runge–Kutta_methods) time-stepping schemes.
 
@@ -246,14 +234,8 @@ Here, $$\{x^{n,i}, u^{n,i}\}_{i=1}^{N_n}$$ corresponds to the data at time $$t^n
 
 The following figure summarizes our predictions after the network has been trained using the above loss function.
 
-<div class="img_row">
-    <img class="col three" src="{{ site.url }}/assets/img/AC.png" alt="" title="AC_DT_inference"/>
-</div>
-<div class="col three caption">
-    Allen-Cahn equation: Top: Solution along with the location of the initial training snapshot at t=0.1 and the final prediction snapshot at t=0.9. Bottom: Initial training data and final prediction at the snapshots depicted by the white vertical lines in the top panel.
-</div>
-
-<br/><br/>
+![](http://www.dam.brown.edu/people/mraissi/assets/img/AC.png)
+> Allen-Cahn equation: Top: Solution along with the location of the initial training snapshot at t=0.1 and the final prediction snapshot at t=0.9. Bottom: Initial training data and final prediction at the snapshots depicted by the white vertical lines in the top panel.
 
 * * * * * *
 ### Data-driven Discovery of Nonlinear Partial Differential Equations
@@ -336,27 +318,12 @@ $$
 
 A summary of our results for this example is presented in the following figures.
 
+![](http://www.dam.brown.edu/people/mraissi/assets/img/NavierStokes_data.png)
+> Navier-Stokes equation: Top: Incompressible flow and dynamic vortex shedding past a circular cylinder at Re=100. The spatio-temporal training data correspond to the depicted rectangular region in the cylinder wake. Bottom: Locations of training data-points for the the stream-wise and transverse velocity components.
 
-<div class="img_row">
-    <img class="col three" src="{{ site.url }}/assets/img/NavierStokes_data.png" alt="" title="NavierStokes_data"/>
-</div>
-<div class="col three caption">
-    Navier-Stokes equation: Top: Incompressible flow and dynamic vortex shedding past a circular cylinder at Re=100. The spatio-temporal training data correspond to the depicted rectangular region in the cylinder wake. Bottom: Locations of training data-points for the the stream-wise and transverse velocity components.
-</div>
 
-<br/><br/>
-<br/><br/>
-
-<div class="img_row">
-    <img class="col three" src="{{ site.url }}/assets/img/NavierStokes_prediction.png" alt="" title="NavierStokes_prediction"/>
-</div>
-<div class="col three caption">
-    Navier-Stokes equation: Top: Predicted versus exact instantaneous pressure field at a representative time instant. By definition, the pressure can be recovered up to a constant, hence justifying the different magnitude between the two plots. This remarkable qualitative agreement highlights the ability of physics-informed neural networks to identify the entire pressure field, despite the fact that no data on the pressure are used during model training. Bottom: Correct partial differential equation along with the identified one.
-</div>
-
-<br/><br/>
-<br/><br/>
-
+![](http://www.dam.brown.edu/people/mraissi/assets/img/NavierStokes_prediction.png)
+> Navier-Stokes equation: Top: Predicted versus exact instantaneous pressure field at a representative time instant. By definition, the pressure can be recovered up to a constant, hence justifying the different magnitude between the two plots. This remarkable qualitative agreement highlights the ability of physics-informed neural networks to identify the entire pressure field, despite the fact that no data on the pressure are used during model training. Bottom: Correct partial differential equation along with the identified one.
 
 Our approach so far assumes availability of scattered data throughout the entire spatio-temporal domain. However, in many cases of practical interest, one may only be able to observe the system at distinct time instants. In the next section, we introduce a different approach that tackles the data-driven discovery problem using only two data snapshots. We will see how, by leveraging the classical [Runge-Kutta](https://en.wikipedia.org/wiki/Runge–Kutta_methods) time-stepping schemes, one can construct discrete time [physics informed neural networks](https://arxiv.org/abs/1711.10566) that can retain high predictive accuracy even when the temporal gap between the data snapshots is very large.
 
@@ -455,14 +422,8 @@ and the shared parameters of the neural networks along with the parameters $$\la
 
 The results of this experiment are summarized in the following figure.
 
-<div class="img_row">
-    <img class="col three" src="{{ site.url }}/assets/img/KdV.png" alt="" title="KdV"/>
-</div>
-<div class="col three caption">
-    KdV equation: Top: Solution along with the temporal locations of the two training snapshots. Middle: Training data and exact solution corresponding to  the two temporal snapshots depicted by the dashed vertical lines in the top panel. Bottom: Correct partial differential equation along with the identified one.
-</div>
-
-<br/><br/>
+![](http://www.dam.brown.edu/people/mraissi/assets/img/KdV.png)
+> KdV equation: Top: Solution along with the temporal locations of the two training snapshots. Middle: Training data and exact solution corresponding to  the two temporal snapshots depicted by the dashed vertical lines in the top panel. Bottom: Correct partial differential equation along with the identified one.
 
 * * * * *
 
