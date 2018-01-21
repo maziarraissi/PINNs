@@ -1,7 +1,5 @@
 ---
 layout: default
-
-site.title: Physics Informed Neural Networks
 ---
 
 
