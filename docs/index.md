@@ -8,6 +8,12 @@ layout: default
 
 We introduce physics informed neural networks -- neural networks that are trained to solve supervised learning tasks while respecting any given law of physics described by general nonlinear [partial differential equations](https://en.wikipedia.org/wiki/Partial_differential_equation). We present our developments in the context of solving two main classes of problems: [data-driven solution](https://arxiv.org/abs/1711.10561) and [data-driven discovery](https://arxiv.org/abs/1711.10566) of partial differential equations. Depending on the nature and arrangement of the available data, we devise two distinct classes of algorithms, namely continuous time and discrete time models. The resulting neural networks form a new class of data-efficient universal function approximators that naturally encode any underlying physical laws as prior information. In the first part, we demonstrate how these networks can be used to [infer solutions to partial differential equations](https://arxiv.org/abs/1703.10230), and obtain physics-informed surrogate models that are fully differentiable with respect to all input coordinates and free parameters. In the second part, we focus on the problem of [data-driven discovery of partial differential equations](https://arxiv.org/abs/1708.00588).
 
+* * * * *
+
+**Acknowledgements**
+
+This work received support by the DARPA EQUiPS grant N66001-15-2-4055 and the AFOSR grant FA9550-17-1-0013. All data and codes are publicly available on [GitHub](https://github.com/maziarraissi/PINNs).
+
 * * * * * *
 ### Data-driven Solutions of Nonlinear Partial Differential Equations
 
@@ -251,7 +257,7 @@ $$
 
 where $$u(t,x)$$ denotes the latent (hidden) solution, $$\mathcal{N}[\cdot;\lambda]$$ is a nonlinear operator parametrized by $$\lambda$$, and $$\Omega$$ is a subset of $$\mathbb{R}^D$$. Now, the problem of data-driven discovery of partial differential equations poses the following question: given a small set of scattered and potentially noisy observations of the hidden state $$u(t,x)$$ of a system, what are the parameters $$\lambda$$ that best describe the observed data?
 
-In what follows, we will provide an overview of our two main approaches to tackle this problem, namely continuous time and discrete time models, as well as a series of results and systematic studies for a diverse collection of benchmarks. In the first approach, we will assume availability of scattered and potential noisy measurements across the entire spatio-temporal domain. In the latter, we will try to infer the unknown parameters $\lambda$ from only two data snapshots taken at distinct time instants. All data and codes used in this manuscript are publicly available on [GitHub](https://github.com/maziarraissi/PINNs).
+In what follows, we will provide an overview of our two main approaches to tackle this problem, namely continuous time and discrete time models, as well as a series of results and systematic studies for a diverse collection of benchmarks. In the first approach, we will assume availability of scattered and potential noisy measurements across the entire spatio-temporal domain. In the latter, we will try to infer the unknown parameters $$\lambda$$ from only two data snapshots taken at distinct time instants. All data and codes used in this manuscript are publicly available on [GitHub](https://github.com/maziarraissi/PINNs).
 
 #### Continuous Time Models
 
@@ -326,7 +332,7 @@ A summary of our results for this example is presented in the following figures.
 
 
 ![](http://www.dam.brown.edu/people/mraissi/assets/img/NavierStokes_prediction.png)
-> _Navier-Stokes equation:_ **Top:"** Predicted versus exact instantaneous pressure field at a representative time instant. By definition, the pressure can be recovered up to a constant, hence justifying the different magnitude between the two plots. This remarkable qualitative agreement highlights the ability of physics-informed neural networks to identify the entire pressure field, despite the fact that no data on the pressure are used during model training. **Bottom:** Correct partial differential equation along with the identified one.
+> _Navier-Stokes equation:_ **Top:** Predicted versus exact instantaneous pressure field at a representative time instant. By definition, the pressure can be recovered up to a constant, hence justifying the different magnitude between the two plots. This remarkable qualitative agreement highlights the ability of physics-informed neural networks to identify the entire pressure field, despite the fact that no data on the pressure are used during model training. **Bottom:** Correct partial differential equation along with the identified one.
 
 Our approach so far assumes availability of scattered data throughout the entire spatio-temporal domain. However, in many cases of practical interest, one may only be able to observe the system at distinct time instants. In the next section, we introduce a different approach that tackles the data-driven discovery problem using only two data snapshots. We will see how, by leveraging the classical [Runge-Kutta](https://en.wikipedia.org/wiki/Runge–Kutta_methods) time-stepping schemes, one can construct discrete time [physics informed neural networks](https://arxiv.org/abs/1711.10566) that can retain high predictive accuracy even when the temporal gap between the data snapshots is very large.
 
@@ -433,12 +439,6 @@ The results of this experiment are summarized in the following figure.
 **Conclusion**
 
 Although a series of promising results was presented, the reader may perhaps agree that this two-part treatise creates more questions than it answers. In a broader context, and along the way of seeking further understanding of such tools, we believe that this work advocates a fruitful synergy between machine learning and classical computational physics that has the potential to enrich both fields and lead to high-impact developments. 
-
-* * * * *
-
-**Acknowledgements**
-
-This work received support by the DARPA EQUiPS grant N66001-15-2-4055 and the AFOSR grant FA9550-17-1-0013. All data and codes are publicly available on [GitHub](https://github.com/maziarraissi/PINNs).
 
 * * * * *
 
