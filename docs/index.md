@@ -1,6 +1,11 @@
 ---
 layout: default
+
+title: Physics Informed Neural Networks
 ---
+
+
+
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 
