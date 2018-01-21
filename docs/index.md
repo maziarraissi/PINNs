@@ -444,14 +444,14 @@ This work received support by the DARPA EQUiPS grant N66001-15-2-4055 and the AF
 
 ## Citation
 
-	@article{raissi2017physics,
+	@article{raissi2017physicsI,
 	  title={Physics Informed Deep Learning (Part I): Data-driven Solutions of Nonlinear Partial Differential Equations},
 	  author={Raissi, Maziar and Perdikaris, Paris and Karniadakis, George Em},
 	  journal={arXiv preprint arXiv:1711.10561},
 	  year={2017}
 	}
 
-	@article{raissi2017physics,
+	@article{raissi2017physicsII,
 	  title={Physics Informed Deep Learning (Part II): Data-driven Discovery of Nonlinear Partial Differential Equations},
 	  author={Raissi, Maziar and Perdikaris, Paris and Karniadakis, George Em},
 	  journal={arXiv preprint arXiv:1711.10566},
