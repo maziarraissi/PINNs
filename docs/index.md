@@ -5,6 +5,18 @@ layout: default
 
 We introduce physics informed neural networks -- neural networks that are trained to solve supervised learning tasks while respecting any given law of physics described by general nonlinear [partial differential equations](https://en.wikipedia.org/wiki/Partial_differential_equation). We present our developments in the context of solving two main classes of problems: [data-driven solution](https://arxiv.org/abs/1711.10561) and [data-driven discovery](https://arxiv.org/abs/1711.10566) of partial differential equations. Depending on the nature and arrangement of the available data, we devise two distinct classes of algorithms, namely continuous time and discrete time models. The resulting neural networks form a new class of data-efficient universal function approximators that naturally encode any underlying physical laws as prior information. In the first part, we demonstrate how these networks can be used to [infer solutions to partial differential equations](https://arxiv.org/abs/1703.10230), and obtain physics-informed surrogate models that are fully differentiable with respect to all input coordinates and free parameters. In the second part, we focus on the problem of [data-driven discovery of partial differential equations](https://arxiv.org/abs/1708.00588).
 
+* * * * * *
+### Data-driven Solutions of Nonlinear Partial Differential Equations
+
+
+In this [first part](https://arxiv.org/abs/1711.10561) of our two-part treatise, we focus on computing data-driven solutions to partial differential equations of the general form
+
+$$
+u_t + \mathcal{N}[u] = 0,\ x \in \Omega, \ t\in[0,T],
+$$
+
+where $$u(t,x)$$ denotes the latent (hidden) solution, $$\mathcal{N}[\cdot]$$ is a nonlinear differential operator, and $$\Omega$$ is a subset of $$\mathbb{R}^D$$. In what follows, we put forth two distinct classes of algorithms, namely continuous and discrete time models, and highlight their properties and performance through the lens of different benchmark problems. All code and data-sets are available [here](https://github.com/maziarraissi/PINNs).
+
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 
