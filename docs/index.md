@@ -89,6 +89,8 @@ Here, $$\{t_u^i, x_u^i, u^i\}_{i=1}^{N_u}$$ denote the initial and boundary trai
 The following figure summarizes our results for the data-driven solution of the Burgers' equation.
 
 
+![](http://www.dam.brown.edu/people/mraissi/assets/img/Burgers_CT_inference.png)
+
 <div class="img_row">
     <img class="col three" src="{{ site.url }}/assets/img/Burgers_CT_inference.png" alt="" title="Burgers_CT_inference"/>
 </div>
