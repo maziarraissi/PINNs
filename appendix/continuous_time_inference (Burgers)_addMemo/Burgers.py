@@ -37,7 +37,7 @@ class PhysicsInformedNN:
         
         self.layers = layers
         self.nu = nu
-        
+
         # Initialize NNs
         self.weights, self.biases = self.initialize_NN(layers)
         
@@ -71,7 +71,7 @@ class PhysicsInformedNN:
         self.sess.run(init)
 
                 
-    def initialize_NN(self, layers):        
+    def initialize_NN(self, layers):      
         weights = []
         biases = []
         num_layers = len(layers) 
@@ -81,35 +81,48 @@ class PhysicsInformedNN:
             weights.append(W)
             biases.append(b)        
         return weights, biases
-        
+
+    # ニューラルネットワークの重みの初期化を行う関数    
     def xavier_init(self, size):
+        #重み行列の入力側と出力側の次元数
         in_dim = size[0]
-        out_dim = size[1]        
+        out_dim = size[1] 
+        #重みをランダムに初期化する際の標準偏差       
         xavier_stddev = np.sqrt(2/(in_dim + out_dim))
         return tf.Variable(tf.truncated_normal([in_dim, out_dim], stddev=xavier_stddev), dtype=tf.float32)
     
+    # 多層パーセプトロンNNの順伝播
+    #X:入力データ, weights:NNの各層の重みを含むリスト, biases:各層のバイアスを含むリスト
     def neural_net(self, X, weights, biases):
+        #層数の計算
         num_layers = len(weights) + 1
-        
+        #入力データの正規化
         H = 2.0*(X - self.lb)/(self.ub - self.lb) - 1.0
+        #隠れ層の計算
         for l in range(0,num_layers-2):
             W = weights[l]
             b = biases[l]
             H = tf.tanh(tf.add(tf.matmul(H, W), b))
+        #出力層の計算
         W = weights[-1]
         b = biases[-1]
         Y = tf.add(tf.matmul(H, W), b)
         return Y
-            
+
+    #xとtを結合してニューラルネットワークに通し、その出力を返すメソッド。1つ上のneural_netメソッドを呼び出す
     def net_u(self, x, t):
         u = self.neural_net(tf.concat([x,t],1), self.weights, self.biases)
         return u
     
+    # PINNでよく用いられる形式。偏微分方程式の残差を計算するメソッド
     def net_f(self, x,t):
+        #ニューラルネットワークにxとtを入力してuを計算
         u = self.net_u(x,t)
+        #偏微分方程式の残差を計算
         u_t = tf.gradients(u, t)[0]
         u_x = tf.gradients(u, x)[0]
         u_xx = tf.gradients(u_x, x)[0]
+        #PDEの残差の計算
         f = u_t + u*u_x - self.nu*u_xx
         
         return f
@@ -117,6 +130,7 @@ class PhysicsInformedNN:
     def callback(self, loss):
         print('Loss:', loss)
         
+    #ニューラルネットワークのトレーニングを行うメソッド
     def train(self):
         
         tf_dict = {self.x_u_tf: self.x_u, self.t_u_tf: self.t_u, self.u_tf: self.u,
@@ -127,7 +141,7 @@ class PhysicsInformedNN:
                                 fetches = [self.loss], 
                                 loss_callback = self.callback)        
                                     
-    
+    #予測を行うメソッド
     def predict(self, X_star):
                 
         u_star = self.sess.run(self.u_pred, {self.x_u_tf: X_star[:,0:1], self.t_u_tf: X_star[:,1:2]})  
