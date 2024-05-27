@@ -1,0 +1,5 @@
+numpy==1.19.1
+scipy
+matplotlib
+tensorflow==1.14
+
