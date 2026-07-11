@@ -37,3 +37,7 @@ For more information, please refer to the following: (https://maziarraissi.githu
       journal={arXiv preprint arXiv:1711.10566},
       year={2017}
     }
+
+---
+
+*[Mukller](https://github.com/Mukller)*
